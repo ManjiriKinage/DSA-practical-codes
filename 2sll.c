@@ -61,6 +61,26 @@ void display() {
         temp = temp->next;
     }
 }
+void update(){
+    int prn;
+    struct node *temp= head;
+     printf("Enter PRN to update: ");
+    scanf("%d", &prn);
+    while(temp!=NULL){
+        if(temp->prn==prn){
+            printf("Enter new Name: ");
+            scanf("%s",temp->name);
+
+             printf("Enter new A.Y.: ");
+            scanf("%s", temp->ay);
+             printf("Record updated successfully\n");
+            return;
+        }
+        temp = temp->next;
+    }
+printf("Record not found\n");
+
+}
 void deleteNode(int c) {
     struct node *temp = head, *p = NULL;
     int prn;
@@ -93,8 +113,9 @@ int main() {
         printf("\n3.Display");
         printf("\n4.Delete Member");
         printf("\n5.Delete Coordinator");
-        printf("\n6.Count Members");
-        printf("\n7.Exit");
+       printf("\n6.Update Member");
+printf("\n7.Count Members");
+printf("\n8.Exit");
         printf("\nEnter choice: ");
         scanf("%d", &ch);
 
@@ -120,10 +141,14 @@ int main() {
             break;
 
         case 6:
-            countMembers();
+            update();
             break;
 
         case 7:
+            countMembers();
+            break;
+
+        case 8:
             printf("Exit\n");
             break;
 
@@ -131,7 +156,7 @@ int main() {
             printf("Invalid choice\n");
         }
 
-    } while (ch != 7);
+    } while (ch != 8);
 
     return 0;
 
